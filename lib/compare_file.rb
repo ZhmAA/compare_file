@@ -1,4 +1,4 @@
-require "compare_file/version"
+require 'compare_file/version'
 
 module CompareFile
   class Compare
@@ -6,14 +6,6 @@ module CompareFile
     def initialize(file, sec_file)
       @file  = file
       @sec_file = sec_file
-    end
-
-    def load(file_path)
-      unless file_path.empty?
-        return File.readlines(file_path).each { |line| line.delete!("\n") }
-      else
-        raise 'File not found! Try again please.'
-      end
     end
 
     def comparefiles
@@ -36,6 +28,14 @@ module CompareFile
     end
 
     private
+
+    def load(file_path)
+      unless file_path.empty?
+        return File.readlines(file_path).each { |line| line.delete!("\n") }
+      else
+        raise 'File not found! Try again please.'
+      end
+    end
 
     def result(lines)
       line  = []
